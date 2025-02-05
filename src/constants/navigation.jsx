@@ -4,6 +4,7 @@ import { MdHomeFilled } from "react-icons/md";
 
 import { MdOutlineLiveTv } from "react-icons/md";
 import { IoSearchSharp } from "react-icons/io5";
+
 export const nav = [
   {
     label: "Home",

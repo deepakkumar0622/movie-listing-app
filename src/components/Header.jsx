@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { nav } from "../constants/navigation";
 
 export const Header = () => {
+  const location = useLocation();
   const [isClicked, setIsClicked] = useState(false);
-  const [SearchInput, SetSearchInput] = useState(" ");
+  const removespace = location?.search?.slice(3)?.split("%20")?.join(" ");
+  const [searchInput, SetSearchInput] = useState(removespace);
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -13,8 +15,10 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    navigate(`/search?q=${SearchInput}`);
-  }, [SearchInput]);
+    if (searchInput.trim()) {
+      navigate(`/search?q=${searchInput}`);
+    }
+  }, [searchInput, navigate]);
 
   const handleoutclick = () => {
     setIsClicked(false);
@@ -22,7 +26,7 @@ export const Header = () => {
 
   return (
     <div onClick={handleoutclick}>
-      <header className="bg-neutral-600 opacity-75 fixed h-16  top-0  w-full ">
+      <header className="bg-black/75 opacity-75 fixed h-16  top-0  w-full z-40">
         <div className="container mx-auto px-10 flex items-center h-full">
           <div>
             <Link to={"/"}>
@@ -69,9 +73,9 @@ export const Header = () => {
                 onChange={(e) => {
                   SetSearchInput(e.target.value);
                 }}
-                value={SearchInput}
+                value={searchInput}
                 placeholder="Search Here...."
-                className="outline-none text-[15px] bg-transparent w-full 
+                className="outline-none text-[15px] bg-transparent w-full
                  text-black font-normal px-4"
               />
             </div>

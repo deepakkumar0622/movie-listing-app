@@ -3,7 +3,7 @@ import { mobilenav } from "../constants/navigation";
 
 const MobileNav = () => {
   return (
-    <div className="md:hidden fixed bottom-0 h-14 bg-neutral-600 opacity-70 w-full">
+    <div className="md:hidden fixed bottom-0 h-14 backdrop-blur-3xl bg-black opacity-80 w-full z-50">
       <div className="flex items-center h-full justify-between text-neutral-400 ">
         {mobilenav.map((v) => {
           return (
