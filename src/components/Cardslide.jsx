@@ -7,10 +7,15 @@ import { useRef } from "react";
 // eslint-disable-next-line react/prop-types
 const Cardslide = ({ data = [], heading, trending, media }) => {
   const swiperRef = useRef(null);
+
   return (
     <div className="relative">
       <div className="container mx-auto px-10 my-5">
-        <h2 className="text-xl md:text-2xl font-bold mb-1">{heading}</h2>
+        <div className="flex justify-between items-center">
+          <h2 className="text-xl md:text-2xl font-bold mb-1 capitalize">
+            {heading}
+          </h2>
+        </div>
 
         <Swiper
           ref={swiperRef}

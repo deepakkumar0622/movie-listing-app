@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
-import { FaRegCirclePlay } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -19,7 +20,7 @@ export const BannerHome = () => {
           pagination={{
             dynamicBullets: true,
           }}
-          speed={3000}
+          speed={4000}
           loop={true}
         >
           {bannerdata.map((v, i) => {
@@ -43,18 +44,15 @@ export const BannerHome = () => {
                       <span>|</span>
                       <p>Views : {Number(v.popularity).toFixed(0)} </p>
                     </div>
-                    <button
-                      className="relative my-5 flex max-w-[200px] active:scale-75 cursor-pointer text-white group
-                     md:text-base text-sm items-center justify-center font-semibold bg-gradient-to-r from-gray-800 to-black md:px-6 px-5 md:py-2 py-2 rounded-full border border-gray-600  duration-200 hover:text-gray-500 hover:border-gray-800 hover:from-black hover:to-gray-900"
+                    <Link
+                      to={"/" + v.media_type + "/" + v.id}
+                      className="group/button my-5 relative inline-flex items-center justify-center overflow-hidden rounded-md bg-gray-500/30 backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:shadow-white/50 border border-white/20"
                     >
-                      <FaRegCirclePlay
-                        size={20}
-                        className="absolute left-0 flex items-center justify-center transform group-hover:translate-x-0 group-hover:scale-150 translate-x-7 group-hover:w-full transition-all duration-500"
-                      />
-                      <span className="text-gray-200 font-semibold ml-8 transform group-hover:opacity-0 group-hover:-translate-x-10 transition-all duration-500">
-                        Play Trailer{" "}
-                      </span>
-                    </button>
+                      <span className="text-lg">Details</span>
+                      <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]">
+                        <div className="relative h-full w-10 bg-white/30"></div>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </SwiperSlide>
