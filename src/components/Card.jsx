@@ -18,7 +18,7 @@ const Card = ({ data, trending, index, media_type }) => {
           <img src={imageUrldata + data?.poster_path} />
         ) : (
           <div className="font-bold flex items-center h-full justify-center">
-            No Image found
+            No Image Found
           </div>
         )}
 
